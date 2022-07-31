@@ -1,13 +1,12 @@
-FROM ubuntu:latest
+FROM python:slim
 
+EXPOSE 8090
 
-RUN apt update
-RUN apt install python3 -y
+RUN pip install flask
+ 
+WORKDIR /app
 
-WORKDIR /use/app/src
+ADD web10.py .
 
-COPY 01_hello_world.py ./
-
-
-CMD [ "python3", "./01_hello_world.py"]
+CMD ["python","web10.py"]
 

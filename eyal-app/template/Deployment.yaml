@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: eyal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eyal
+  template:
+    metadata:
+      labels:
+        app: eyal
+    spec:
+      containers:
+      - name: nginx
+        image: 517579239930.dkr.ecr.eu-central-1.amazonaws.com/eyal
+        ports:
+        - containerPort: 80
