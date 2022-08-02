@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: default
   name: nginx-deployment
   labels:
     app: eyal
@@ -14,8 +15,11 @@ spec:
       labels:
         app: eyal
     spec:
+      imagePullSecrets:
+      - name: myaws
       containers:
-      - name: nginx
-        image: 517579239930.dkr.ecr.eu-central-1.amazonaws.com/eyal
+      - name: eyal
+        image: 517579239930.dkr.ecr.eu-central-1.amazonaws.com/eyal:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 8090
